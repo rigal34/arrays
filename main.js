@@ -175,3 +175,121 @@ console.log(monTableau);//[ "dbBd", "bB", "d" ]il prend index 0,puis index 1,pui
 
 
 //ALLEZ SUR "Array -JavaScript MDN" pour des infos plus poussées
+
+
+
+
+///PLUSIEURS FAÇONS DE SUPPRIMMER UN ELEMENTS D'UN TABLEAU 
+
+//1 METHODE SPLICE
+
+//MODIFIE LE TABLEAU
+
+//RETOURNE UN TABLEAU AVEC LES ELEMENTS ENLEVÉS
+
+const arr = ["a", "b", "c", "d"];
+
+
+arr.splice(1,3,"Z");   //le 1er et l'index et le second et le nombre d'élément à supprimer ET JE PEUX EN RAJOUTER
+
+//IL ME RETOURNE LES ÉLÉMENTS SUPPRIMÉS
+console.log(arr.splice(1,3,"Z"));
+
+console.log(arr);//[ "a", "c", "d" ]
+
+// 2/3 . pop()& shift()
+//trés bien pour les listes
+
+
+const championLeague = [
+
+    {name: "Bayern", rank: 1},
+    {name: "Liverpool", rank: 2},
+    {name: "Real Madrid", rank: 3},
+    {name: "Manchester", rank: 4},
+    {name: "FC Porto", rank: 5},
+    {name: "Milan AC", rank: 6},
+];
+
+
+championLeague.pop();//enlève le dernier élément d'un tableau
+console.log(championLeague);
+
+championLeague.shift();//enlève le premier élément d'un tableau
+console.log(championLeague);
+
+
+
+
+//4.la méthode filter()
+
+const tailles = [185, 165, 155, 198, 215, 175];
+
+const grandesTailles = tailles.filter(mesure => 
+    mesure >= 185);
+
+    console.log(grandesTailles);//les dimensions comprise supérieur ou égal à 185
+
+
+
+
+ //5. L'opérateur delete avec les tableaux m'oves idée
+
+ const cars = ["Audi", "Ferrari", "BMW", "Toyota", "Mercerdes"];
+
+ delete cars [2];
+ console.log(cars);//m'affiche empty à l'élément que je viens de supprimer
+
+ //pour les objets cela me fait disparaitre vraiment mon élément
+
+ const objet = {
+     a:5
+ }
+
+delete objet.a;
+
+console.log(objet);//{}
+
+
+//6.slice est utlisé pour extraire des tableaux
+//sa va retourner un nouveau tableau à  partir d'une portion d'un tableau existant
+const arbres = ["Chêne", "Bouleau", "Érable", "Hêtre"];
+
+const slicedArr = arbres.slice(1);
+
+console.log(slicedArr);//Array(3) [ "Bouleau", "Érable", "Hêtre" ]
+
+
+
+
+//7. Créer une fonction custom
+
+//pour supprimer des éléments
+
+function supprimeTableauElement1(tableau,element){
+    
+    return tableau.filter(rigal => rigal !== element)
+    //console.log(tableau);
+
+    
+}
+console.log(supprimeTableauElement1([1,2,3], 2));//affiche Array [ 1, 3 ] cela à bien supprimé 2 tout en me retournant un nouveau tableau avec la méthode filter
+
+
+
+////////////////////////////////////////////////////////////////////////
+
+//pour suprimer des index 
+//
+
+function supprimeIndex(tableau, index){
+
+    tableau.splice(index, 1);
+
+    return tableau;
+}
+
+console.log(supprimeIndex(["a","b","c"],2)); //Array [ a, b ]ma garder la a et le c pour me supprimer index 2 
+
+
+
